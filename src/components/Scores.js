@@ -15,7 +15,7 @@ class Scores extends Component {
     return (
       _.map(this.props.games, game => {
         return (
-          <GameCard game={game} />
+          <GameCard key={game.home.abbr} game={game} />
         )
       })
     )
@@ -23,7 +23,7 @@ class Scores extends Component {
 
   render() {
     return (
-      <div className="four columns">
+      <div>
         <h3>Scores</h3>
         <div>
           {this.renderGames()}

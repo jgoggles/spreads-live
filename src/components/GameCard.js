@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class GameCard extends Component {
   render() {
     const { game } = this.props;
-    console.log("away", game.away);
     return (
       <div>
         <div className="away">

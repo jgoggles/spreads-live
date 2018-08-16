@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class PickSets extends Component {
   render() {
     return (
-      <div className="four columns">
+      <div>
         <h3>Picks</h3>
       </div>
     )
