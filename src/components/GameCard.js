@@ -6,8 +6,12 @@ class GameCard extends Component {
     return (
       <div>
         <div className="away">
-          <span>{game.away.abbr}</span>
-          <span>{game.away.score.T}</span>
+          <span>{game.away.full_name}</span>
+          <span>{game.away.score}</span>
+        </div>
+        <div className="home">
+          <span>{game.home.full_name}</span>
+          <span>{game.home.score}</span>
         </div>
       </div>
     )

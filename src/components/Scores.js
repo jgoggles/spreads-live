@@ -2,20 +2,32 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchGames } from '../actions/game_actions';
+import { fetchGames, fetchScores } from '../actions/game_actions';
 import GameCard from './GameCard';
 
 
 class Scores extends Component {
+  constructor(props) {
+    super(props);
+    this.autoFlush(5000);
+  }
+
   componentWillMount() {
     this.props.fetchGames();
+  }
+
+  autoFlush(interval) {
+    return this.flushInterval = setInterval(() => {
+      return this.props.fetchScores();
+    },
+    interval);
   }
 
   renderGames() {
     return (
       _.map(this.props.games, game => {
         return (
-          <GameCard key={game.home.abbr} game={game} />
+          <GameCard key={game.id} game={game} />
         )
       })
     )
@@ -38,7 +50,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchGames}, dispatch);
+  return bindActionCreators({fetchGames, fetchScores}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Scores);
