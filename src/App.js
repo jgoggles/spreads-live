@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Scores from './components/Scores'
 import PickSets from './components/PickSets'
 import Standings from './components/Standings'
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Table, Grid, Row, Col } from 'react-bootstrap';
 
 class App extends Component {
   render() {

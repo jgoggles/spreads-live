@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import GamesReducer from './game_reducer';
+import GameReducer from './game_reducer';
+import PickSetReducer from './pick_set_reducer';
 
 const rootReducer = combineReducers({
-  games: GamesReducer
+  games: GameReducer,
+  pickSets: PickSetReducer
 });
 
 export default rootReducer;

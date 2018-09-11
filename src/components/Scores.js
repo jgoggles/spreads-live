@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchGames, fetchScores } from '../actions/game_actions';
+import { updatePickSets } from '../actions/pick_set_actions';
 import GameCard from './GameCard';
 
 
@@ -18,7 +19,8 @@ class Scores extends Component {
 
   autoFlush(interval) {
     return this.flushInterval = setInterval(() => {
-      return this.props.fetchScores();
+      this.props.fetchScores();
+      return this.props.updatePickSets(this.props.games);
     },
     interval);
   }
@@ -46,11 +48,18 @@ class Scores extends Component {
 }
 
 function mapStateToProps(state) {
-  return { games: state.games };
+  return { 
+          games: state.games,
+          pickSets: state.pickSets
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchGames, fetchScores}, dispatch);
+  return bindActionCreators({
+    fetchGames, 
+    fetchScores,
+    updatePickSets
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Scores);

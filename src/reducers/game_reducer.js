@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { FETCH_GAMES, FETCH_SCORES } from '../actions/game_actions';
 
-export default function(state = {}, action) {
+export default function(state = [], action) {
   switch (action.type) {
     case FETCH_GAMES:
       return action.payload.data;

@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
+import { Table } from 'react-bootstrap';
 
 class GameCard extends Component {
   render() {
     const { game } = this.props;
+    const scoreWidth = {width: '40px'};
     return (
-      <div>
-        <div className="away">
-          <span>{game.away.full_name}</span>
-          <span>{game.away.score}</span>
-        </div>
-        <div className="home">
-          <span>{game.home.full_name}</span>
-          <span>{game.home.score}</span>
-        </div>
-      </div>
+      <Table bordered>
+        <tbody>
+          <tr className="away">
+            <td>{game.away.full_name}</td>
+            <td style={scoreWidth}>{game.away.score}</td>
+          </tr>
+          <tr className="home">
+            <td>{game.home.full_name}</td>
+            <td>{game.home.score}</td>
+          </tr>
+        </tbody>
+      </Table>
     )
   }
 }
