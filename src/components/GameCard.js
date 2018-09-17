@@ -6,7 +6,7 @@ class GameCard extends Component {
     const { game } = this.props;
     const scoreWidth = {width: '40px'};
     return (
-      <Table bordered>
+      <Table bordered condensed>
         <tbody>
           <tr className="away">
             <td>{game.away.full_name}</td>
