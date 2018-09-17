@@ -3,15 +3,18 @@ import PickHelper from '../lib/pick_helper';
 import { FETCH_PICK_SETS, UPDATE_PICK_SETS } from '../actions/pick_set_actions';
 
 export default function(state = [], action) {
+  let pickSets;
   switch (action.type) {
     case FETCH_PICK_SETS:
-      return action.payload.data;
+      pickSets =  action.payload.data;
+      return _.sortBy(pickSets, [(ps) => { return ps.user }]); 
     case UPDATE_PICK_SETS:
       const games = action.payload;
-      const pickSets = state;
+      pickSets = state;
 
       const newState = _.map(pickSets, ps => {
-        let record = {win: 0, loss: 0, push: 0}
+        let record = {win: 0, loss: 0, push: 0};
+        let seasonPoints;
         const picks = _.map(ps.picks, pick => {
           const game = _.filter(games, game => {
             return game.id == pick.game_id
@@ -27,7 +30,8 @@ export default function(state = [], action) {
           }
           return {...pick, result: result}
         })
-        return {...ps, picks: picks, record: record}
+        seasonPoints = ps.points + record.win - record.loss
+        return {...ps, picks: picks, record: record, new_points: seasonPoints}
       })
 
       return newState;

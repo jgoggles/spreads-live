@@ -10,13 +10,13 @@ class App extends Component {
       <Grid>
         <Row className="show-grid">
           <Col md={4}>
-            <Scores />
-          </Col>
-          <Col md={4}>
             <PickSets />
           </Col>
           <Col md={4}>
             <Standings />
+          </Col>
+          <Col md={4}>
+            <Scores />
           </Col>
         </Row>
       </Grid>
