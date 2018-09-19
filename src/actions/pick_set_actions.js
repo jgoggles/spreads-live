@@ -4,7 +4,12 @@ import parseUrl from 'url-parse';
 export const FETCH_PICK_SETS = 'fetch_pick_sets';
 export const UPDATE_PICK_SETS = 'update_pick_sets';
 
-const API_URL = 'http://localhost:3001/api/v1/picks';
+let API_URL;
+if (process.env.NODE_ENV !== 'production') {
+  API_URL = 'http://localhost:3001/api/v1/picks';
+} else {
+  API_URL = 'http://spreads.herokuapp.com/api/v1/picks';
+}
 
 export function fetchPickSets() {
   const pathname = parseUrl(window.location.href).pathname
