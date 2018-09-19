@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchPickSets } from '../actions/pick_set_actions';
 import PickCard from './PickCard';
-import { Table } from 'react-bootstrap';
 
 class PickSets extends Component {
   componentWillMount() {

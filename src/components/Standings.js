@@ -11,7 +11,7 @@ class Standings extends Component {
         return (
           <tr key={pickSet.id}>
             <td>{pickSet.user}</td> 
-            <td>{pickSet.points}</td> 
+            <td>{pickSet.new_points}</td> 
           </tr>
         )
       })
