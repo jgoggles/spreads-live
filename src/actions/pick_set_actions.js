@@ -18,7 +18,8 @@ export function fetchPickSets() {
   const requestConfig = {
     method: 'get',
     url: API_URL,
-    params: {pool_id: poolId},
+    //params: {pool_id: poolId},
+    params: {pool_id: '7e1a9162'},
   }
 
   const request = axios.request(requestConfig);
