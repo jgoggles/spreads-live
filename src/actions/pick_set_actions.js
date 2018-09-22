@@ -1,5 +1,4 @@
 import axios from 'axios';
-import parseUrl from 'url-parse';
 
 export const FETCH_PICK_SETS = 'fetch_pick_sets';
 export const UPDATE_PICK_SETS = 'update_pick_sets';
@@ -12,14 +11,13 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export function fetchPickSets() {
-  const pathname = parseUrl(window.location.href).pathname
-  const poolId = pathname.split('/')[1];
-
+  const urlParams = new URLSearchParams(window.location.search);
+  const poolId = urlParams.get('pool_id');
+  
   const requestConfig = {
     method: 'get',
     url: API_URL,
-    //params: {pool_id: poolId},
-    params: {pool_id: '7e1a9162'},
+    params: {pool_id: poolId},
   }
 
   const request = axios.request(requestConfig);
