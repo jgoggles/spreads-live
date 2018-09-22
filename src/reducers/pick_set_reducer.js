@@ -21,7 +21,9 @@ export default function(state = [], action) {
           })
           const pickHelper = new PickHelper();
           const result = pickHelper.result(pick, game[0]);
-          if (result == 'W') {
+          if (!result) {
+            record
+          } else if (result == 'W') {
             record = {...record, win: record.win + 1}
           } else if (result == 'L') {
             record = {...record, loss: record.loss + 1}

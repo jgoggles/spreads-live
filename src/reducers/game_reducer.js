@@ -7,16 +7,16 @@ export default function(state = [], action) {
       return action.payload.data;
     case FETCH_SCORES:
       const games = state;
-      //const scores = action.payload.data;
+      const scores = action.payload.data;
       const newState = _.map(games, game => {
-        //let scoreGame = _.find(scores, s => { 
-          //return s.home.abbr == game.home.abbr 
-        //});
+        let scoreGame = _.find(scores, s => { 
+          return s.home.abbr == game.home.abbr 
+        });
         return {...game, 
-          home: {...game.home, score: Math.floor(Math.random() * 42)},
-          away: {...game.away, score: Math.floor(Math.random() * 42)}
-          //home: {...game.home, score: scoreGame.home.score.T},
-          //away: {...game.away, score: scoreGame.away.score.T}
+          //home: {...game.home, score: Math.floor(Math.random() * 42)},
+          //away: {...game.away, score: Math.floor(Math.random() * 42)}
+          home: {...game.home, score: scoreGame.home.score.T},
+          away: {...game.away, score: scoreGame.away.score.T}
         }
       })
       return newState;

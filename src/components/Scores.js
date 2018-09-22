@@ -10,19 +10,25 @@ import GameCard from './GameCard';
 class Scores extends Component {
   constructor(props) {
     super(props);
-    this.autoFlush(5000);
+    this.autoFlush(60000);
   }
 
   componentWillMount() {
-    this.props.fetchGames();
+    this.props.fetchGames()
+      .then(() => {
+        this.props.fetchScores();
+      })
   }
 
   autoFlush(interval) {
-    return this.flushInterval = setInterval(() => {
+    setInterval(() => {
       this.props.fetchScores();
-      return this.props.updatePickSets(this.props.games);
     },
     interval);
+  }
+
+  componentDidUpdate() {
+    this.props.updatePickSets(this.props.games);
   }
 
   renderGames() {
@@ -49,8 +55,7 @@ class Scores extends Component {
 
 function mapStateToProps(state) {
   return { 
-          games: state.games,
-          pickSets: state.pickSets
+    games: state.games
   };
 }
 

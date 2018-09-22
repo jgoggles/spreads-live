@@ -12,7 +12,9 @@ export default class PickHelper {
       opponent = game.home;
     }
 
-    if ((picked.score + pick.spread) - opponent.score > 0) {
+    if (!picked.score) {
+      return null
+    } else if ((picked.score + pick.spread) - opponent.score > 0) {
       return 'W';
     } else if ((picked.score + pick.spread) - opponent.score == 0) {
       return 'P';

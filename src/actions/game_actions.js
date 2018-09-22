@@ -21,8 +21,8 @@ export function fetchGames() {
 }
 
 export function fetchScores() {
-  //const request = axios.get(`${SCORES_URL}`);
-  const request = {}
+  const request = axios.get(`${SCORES_URL}`);
+  //const request = {}
 
   return {
     type: FETCH_SCORES,
