@@ -7,7 +7,7 @@ export default function(state = [], action) {
   switch (action.type) {
     case FETCH_PICK_SETS:
       pickSets =  action.payload.data;
-      return _.sortBy(pickSets, [(ps) => { return ps.user }]); 
+      return _.sortBy(pickSets, [(ps) => { return ps.user.toLowerCase() }]); 
     case UPDATE_PICK_SETS:
       const games = action.payload;
       pickSets = state;
@@ -41,5 +41,3 @@ export default function(state = [], action) {
       return state;
   }
 }
-
-
