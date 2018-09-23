@@ -52,7 +52,7 @@ class PickCard extends Component {
     const { pickSet } = this.props;
     return (
       <div>
-        <Table hover className="pick-set-table">
+        <Table condensed hover className="pick-set-table">
           <tbody>
             <tr className="pick-set-head" onClick={this.togglePicks}>
               <td>{pickSet.user}</td>
