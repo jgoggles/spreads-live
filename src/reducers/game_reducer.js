@@ -16,7 +16,8 @@ export default function(state = [], action) {
           //home: {...game.home, score: Math.floor(Math.random() * 42)},
           //away: {...game.away, score: Math.floor(Math.random() * 42)}
           home: {...game.home, score: scoreGame.home.score.T},
-          away: {...game.away, score: scoreGame.away.score.T}
+          away: {...game.away, score: scoreGame.away.score.T},
+          qtr: scoreGame.qtr
         }
       })
       return newState;
