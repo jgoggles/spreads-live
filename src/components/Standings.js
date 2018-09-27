@@ -6,10 +6,16 @@ import { Table } from 'react-bootstrap';
 class Standings extends Component {
   renderStanding() {
     const pickSets = _.sortBy(this.props.pickSets, [(ps) => { return -ps.new_points }]); 
+    let rowStyle;
     return (
       _.map(pickSets, pickSet => {
+        if (pickSet.current) {
+          rowStyle = {
+            "backgroundColor": "#98FB98"
+          }
+        } else { rowStyle = null }
         return (
-          <tr key={pickSet.id}>
+          <tr key={pickSet.id} style={rowStyle}>
             <td>{pickSet.user}</td> 
             <td>{pickSet.new_points}</td> 
           </tr>

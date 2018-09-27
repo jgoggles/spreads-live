@@ -13,11 +13,12 @@ if (process.env.NODE_ENV !== 'production') {
 export function fetchPickSets() {
   const urlParams = new URLSearchParams(window.location.search);
   const poolId = urlParams.get('pool_id');
+  const userId = urlParams.get('user');
   
   const requestConfig = {
     method: 'get',
     url: API_URL,
-    params: {pool_id: poolId},
+    params: {pool: poolId, user: userId},
   }
 
   const request = axios.request(requestConfig);

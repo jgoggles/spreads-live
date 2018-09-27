@@ -50,9 +50,17 @@ class PickCard extends Component {
 
   render() {
     const { pickSet } = this.props;
+    const currentUser = pickSet.current;
+    let tableStyle;
+    if (currentUser) {
+      tableStyle = {
+        "backgroundColor": "#98FB98"
+      }
+    }
+
     return (
       <div>
-        <Table condensed hover className="pick-set-table">
+        <Table condensed hover className="pick-set-table" style={tableStyle}>
           <tbody>
             <tr className="pick-set-head" onClick={this.togglePicks}>
               <td>{pickSet.user}</td>
