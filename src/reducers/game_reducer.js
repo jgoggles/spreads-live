@@ -9,15 +9,24 @@ export default function(state = [], action) {
       const games = state;
       const scores = action.payload.data;
       const newState = _.map(games, game => {
-        let scoreGame = _.find(scores, s => { 
-          return s.home.abbr == game.home.abbr 
-        });
+        let scoreGame;
+        if (process.env.NODE_ENV !== 'production') {
+          scoreGame = _.find(scores, s => { 
+            return s.home.abbr == game.home.abbr 
+          });
+        }
+        let homeScore;
+        let awayScore;
+        if (process.env.NODE_ENV !== 'production') {
+          homeScore = Math.floor(Math.random() * 42);
+          awayScore = Math.floor(Math.random() * 42);
+        } else {
+          homeScore = scoreGame.home.score.T;
+          awayScore = scoreGame.away.score.T;
+        }
         return {...game, 
-          //home: {...game.home, score: Math.floor(Math.random() * 42)},
-          //away: {...game.away, score: Math.floor(Math.random() * 42)}
-          home: {...game.home, score: scoreGame.home.score.T},
-          away: {...game.away, score: scoreGame.away.score.T},
-          qtr: scoreGame.qtr
+          home: {...game.home, score: homeScore},
+          away: {...game.away, score: awayScore},
         }
       })
       return newState;

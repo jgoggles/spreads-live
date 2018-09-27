@@ -21,8 +21,12 @@ export function fetchGames() {
 }
 
 export function fetchScores() {
-  const request = axios.get(`${SCORES_URL}`);
-  //const request = {}
+  let request;
+  if (process.env.NODE_ENV !== 'production') {
+    request = {}
+  } else {
+    request = axios.get(`${SCORES_URL}`);
+  }
 
   return {
     type: FETCH_SCORES,
