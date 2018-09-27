@@ -12,7 +12,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 export function fetchPickSets() {
   const urlParams = new URLSearchParams(window.location.search);
-  const poolId = urlParams.get('pool_id');
+  const poolId = urlParams.get('pool');
   const userId = urlParams.get('user');
   
   const requestConfig = {
