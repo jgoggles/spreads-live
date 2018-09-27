@@ -10,7 +10,7 @@ export default function(state = [], action) {
       const scores = action.payload.data;
       const newState = _.map(games, game => {
         let scoreGame;
-        if (process.env.NODE_ENV !== 'production') {
+        if (process.env.NODE_ENV == 'production') {
           scoreGame = _.find(scores, s => { 
             return s.home.abbr == game.home.abbr 
           });
