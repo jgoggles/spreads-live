@@ -12,7 +12,10 @@ export default function(state = [], action) {
         let scoreGame;
         if (process.env.NODE_ENV == 'production') {
           scoreGame = _.find(scores, s => { 
-            return s.home.abbr == game.home.abbr 
+            return (
+              s.home.abbr == game.home.abbr &&
+              s.away.abbr == game.away.abbr 
+            )
           });
         }
         let homeScore;
