@@ -11,7 +11,7 @@ class Standings extends Component {
       _.map(pickSets, pickSet => {
         if (pickSet.current) {
           rowStyle = {
-            "backgroundColor": "#98FB98"
+            "backgroundColor": "#d1ecf1"
           }
         } else { rowStyle = null }
         return (

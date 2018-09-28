@@ -10,7 +10,13 @@ import GameCard from './GameCard';
 class Scores extends Component {
   constructor(props) {
     super(props);
-    this.autoFlush(60000);
+    let interval;
+    if (process.env.NODE_ENV !== 'production') {
+      interval = 5000;
+    } else {
+      interval = 60000;
+    }
+    this.autoFlush(interval);
   }
 
   componentWillMount() {
@@ -34,8 +40,6 @@ class Scores extends Component {
   renderGames() {
     return (
       _.map(this.props.games, game => {
-        //const picks = _.filter(this.props.pickSets, { picks: [ { game_id: 3459 } ]});
-        //console.log('picks', picks);
         return (
           <GameCard key={game.id} game={game} />
         )

@@ -54,7 +54,7 @@ class PickCard extends Component {
     let tableStyle;
     if (currentUser) {
       tableStyle = {
-        "backgroundColor": "#98FB98"
+        "backgroundColor": "#d1ecf1"
       }
     }
 

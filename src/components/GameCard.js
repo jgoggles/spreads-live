@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Table } from 'react-bootstrap';
+import TeamPick from './TeamPick';
+import TeamScore from './TeamScore';
 import './Scores.css';
 
 class GameCard extends Component {
@@ -15,17 +17,7 @@ class GameCard extends Component {
         }
       })
     })
-
-    return (
-      _.map(picks, p => {
-        return (
-          <tr key={p.pick.id}>
-            <td colSpan="2">{p.user}</td>
-            <td>{p.pick.spread}</td>
-          </tr>
-        )
-      })
-    )
+    return picks;
   }
 
   render() {
@@ -33,24 +25,8 @@ class GameCard extends Component {
     const scoreWidth = {width: '40px'};
     return (
       <Table className="score" bordered condensed>
-        <tbody>
-          <tr className="away">
-            <td className="logo">
-              <img src={game.away.logo} />
-            </td>
-            <td>{game.away.full_name}</td>
-            <td style={scoreWidth}>{game.away.score}</td>
-          </tr>
-          {this.teamPicks(game.away.id)}
-          <tr className="home">
-            <td className="logo">
-              <img src={game.home.logo} />
-            </td>
-            <td>{game.home.full_name}</td>
-            <td>{game.home.score}</td>
-          </tr>
-          {this.teamPicks(game.home.id)}
-        </tbody>
+        <TeamScore team={game.away} picks={this.teamPicks(game.away.id)} />
+        <TeamScore team={game.home} picks={this.teamPicks(game.home.id)} />
       </Table>
     )
   }
