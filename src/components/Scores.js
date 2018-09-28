@@ -34,6 +34,8 @@ class Scores extends Component {
   renderGames() {
     return (
       _.map(this.props.games, game => {
+        //const picks = _.filter(this.props.pickSets, { picks: [ { game_id: 3459 } ]});
+        //console.log('picks', picks);
         return (
           <GameCard key={game.id} game={game} />
         )
