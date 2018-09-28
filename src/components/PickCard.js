@@ -19,7 +19,7 @@ class PickCard extends Component {
     return (
       _.map(this.props.pickSet.picks, pick => {
         return (
-          <tr key={pick.id}>
+          <tr className="user-pick" key={pick.id}>
             <td>{pick.team}</td>
             <td style={spreadWidth}>{pick.spread}</td>
             <td style={spreadWidth}>{pick.result}</td>
