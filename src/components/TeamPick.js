@@ -22,7 +22,7 @@ class TeamPick extends Component {
     }
 
     return (
-      <tr style={{"visibility": display, "backgroundColor": backgroundColor}}>
+      <tr className="team-pick" style={{"visibility": display, "backgroundColor": backgroundColor}}>
         <td colSpan="2">{teamPick.user}</td>
         <td>{teamPick.pick.spread}</td>
       </tr>
