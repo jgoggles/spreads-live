@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { Table } from 'react-bootstrap';
+import { Table, Collapse } from 'react-bootstrap';
 import './PickCard.css';
 
 class PickCard extends Component {
@@ -40,14 +40,6 @@ class PickCard extends Component {
     this.setState({showRows: !this.state.showRows});
   }
 
-  rowStyle() {
-    if (this.state.showRows) {
-      return "table";
-    } else {
-      return "none";
-    }
-  }
-
   render() {
     const { pickSet } = this.props;
     const currentUser = pickSet.current;
@@ -68,11 +60,15 @@ class PickCard extends Component {
             </tr>
           </tbody>
         </Table>
-        <Table condensed bordered style={{"display": this.rowStyle()}} key={pickSet.id}>
-          <tbody>
-            {this.renderTeams()}
-          </tbody>
-        </Table>
+        <Collapse in={this.state.showRows}>
+          <div>
+            <Table condensed bordered key={pickSet.id}>
+              <tbody>
+                {this.renderTeams()}
+              </tbody>
+            </Table>
+          </div>
+        </Collapse>
       </div>
     )
   }
