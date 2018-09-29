@@ -63,9 +63,9 @@ class TeamScore extends Component {
           </td>
           <td>
             {team.full_name}
-            <span className="pick-count">
+            <div className="pick-count">
               {this.pickCountMessage()}
-            </span>
+            </div>
           </td>
           <td style={scoreWidth}>{team.score}</td>
         </tr>
