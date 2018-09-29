@@ -5,7 +5,8 @@ import { picksAvailable } from './actions/access_actions';
 import Scores from './components/Scores'
 import PickSets from './components/PickSets'
 import Standings from './components/Standings'
-import { Table, Grid, Row, Col } from 'react-bootstrap';
+import NotAvailable from './components/NotAvailable'
+import { Table, Grid, Row, Col, Alert } from 'react-bootstrap';
 
 class App extends Component {
   componentDidMount() {
@@ -15,9 +16,7 @@ class App extends Component {
   render() {
     if (!this.props.showPicks) {
       return (
-        <div>
-          No dice
-        </div>
+        <NotAvailable />
       )
     }
 
