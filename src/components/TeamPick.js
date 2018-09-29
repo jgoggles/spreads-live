@@ -9,9 +9,11 @@ class TeamPick extends Component {
 
     let display;
     if (this.props.display) {
-      display = "visible";
+      //display = "visible";
+      display = "table-row";
     } else {
-      display = "collapse";
+      //display = "collapse";
+      display = "none";
     }
 
     let backgroundColor;
@@ -22,7 +24,7 @@ class TeamPick extends Component {
     }
 
     return (
-      <tr className="team-pick" style={{"visibility": display, "backgroundColor": backgroundColor}}>
+      <tr className="team-pick" style={{"display": display, "backgroundColor": backgroundColor}}>
         <td colSpan="2">{teamPick.user}</td>
         <td>{teamPick.pick.spread}</td>
       </tr>
