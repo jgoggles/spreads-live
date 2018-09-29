@@ -27,17 +27,15 @@ class TeamScore extends Component {
         })
       )
     } else {
-      let visible;
+      let display;
       if (this.state.showPicks) {
-        //visible = "visible"
-        visible = "table-row"
+        display = "table-row"
       } else {
-        //visible = "hidden"
-        visible = "none"
+        display = "none"
       }
 
       return (
-        <tr className="team-pick" style={{"display": visible}}>
+        <tr className="team-pick" style={{"display": display}}>
           <td colSpan="3">{"No picks for the " + this.props.team.nickname}</td>
         </tr>
       )

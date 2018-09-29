@@ -9,10 +9,8 @@ class TeamPick extends Component {
 
     let display;
     if (this.props.display) {
-      //display = "visible";
       display = "table-row";
     } else {
-      //display = "collapse";
       display = "none";
     }
 
