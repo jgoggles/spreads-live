@@ -31,7 +31,7 @@ class TeamScore extends Component {
       if (this.state.showPicks) {
         visible = "visible"
       } else {
-        visible = "collapse"
+        visible = "hidden"
       }
 
       return (
