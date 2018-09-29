@@ -22,10 +22,10 @@ export function fetchGames() {
 
 export function fetchScores() {
   let request;
-  if (process.env.NODE_ENV !== 'production') {
-    request = {}
-  } else {
+  if (process.env.NODE_ENV == 'production') {
     request = axios.get(`${SCORES_URL}`);
+  } else {
+    request = {}
   }
 
   return {

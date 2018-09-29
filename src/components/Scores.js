@@ -11,10 +11,10 @@ class Scores extends Component {
   constructor(props) {
     super(props);
     let interval;
-    if (process.env.NODE_ENV !== 'production') {
-      interval = 5000;
-    } else {
+    if (process.env.NODE_ENV == 'production') {
       interval = 60000;
+    } else {
+      interval = 5000;
     }
     this.autoFlush(interval);
   }

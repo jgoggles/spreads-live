@@ -2,6 +2,17 @@
   border: none !important;
 }
 
+.game-info {
+  font-size: 11px;
+}
+
+.clock {
+}
+
+.down-and-distance {
+  margin-left: 18px;
+}
+
 .team-score:hover {
   background-color: #f5f5f5;
   cursor: pointer;

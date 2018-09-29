@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Table } from 'react-bootstrap';
 import TeamPick from './TeamPick';
 import TeamScore from './TeamScore';
+import GameInfo from './game_info/GameInfo';
 import './Scores.css';
 
 class GameCard extends Component {
@@ -27,6 +28,7 @@ class GameCard extends Component {
       <Table className="score" bordered condensed>
         <TeamScore team={game.away} picks={this.teamPicks(game.away.id)} />
         <TeamScore team={game.home} picks={this.teamPicks(game.home.id)} />
+        <GameInfo game={game} />
       </Table>
     )
   }
