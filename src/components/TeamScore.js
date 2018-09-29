@@ -35,11 +35,17 @@ class TeamScore extends Component {
       }
 
       return (
-        <tr style={{"visibility": visible}}>
-          <td colSpan="3">{`No picks for the ${this.props.team.nickname}`}</td>
+        <tr className="team-pick" style={{"visibility": visible}}>
+          <td colSpan="3">{"No picks for the " + this.props.team.nickname}</td>
         </tr>
       )
     }
+  }
+
+  pickCountMessage() {
+    const pickCount = this.props.picks.length;
+    const word = pickCount === 1 ? "pick" : "picks";
+    return `${pickCount} ${word}`
   }
 
   togglePicks() {
@@ -55,7 +61,12 @@ class TeamScore extends Component {
           <td className="logo">
             <img src={team.logo} />
           </td>
-          <td>{team.full_name}</td>
+          <td>
+            {team.full_name}
+            <span className="pick-count">
+              {this.pickCountMessage()}
+            </span>
+          </td>
           <td style={scoreWidth}>{team.score}</td>
         </tr>
         {this.renderPicks()}
