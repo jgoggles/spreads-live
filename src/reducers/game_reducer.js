@@ -30,7 +30,9 @@ export default function(state = [], action) {
             qtr: null,
             clock: null,
             down: null,
-            togo: null
+            togo: null,
+            posteam: null,
+            yl: null
           }
         }
 
@@ -40,7 +42,9 @@ export default function(state = [], action) {
           qtr: scoreGame.qtr,
           clock: scoreGame.clock,
           down: scoreGame.down,
-          togo: scoreGame.togo
+          togo: scoreGame.togo,
+          posteam: scoreGame.posteam,
+          yl: scoreGame.yl
         }
       })
       return newState;

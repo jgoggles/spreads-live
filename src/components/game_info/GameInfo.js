@@ -9,7 +9,7 @@ class GameInfo extends React.Component {
     const { game } = this.props;
 
 
-    if (game.qtr === "Final") {
+    if (game.qtr === "Final" || game.qtr === "final overtime") {
       return <Final />
     } else if (game.qtr === "Pregame" || !game.qtr) {
       return <Pregame date={game.date} />

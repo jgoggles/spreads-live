@@ -21,13 +21,19 @@ class GameCard extends Component {
     return picks;
   }
 
+  possession(team) {
+    if (["1", "2", "3", "4", "overtime"].includes(this.props.game.qtr)) {
+      return team.abbr === this.props.game.posteam;
+    }
+  }
+
   render() {
     const { game } = this.props;
     const scoreWidth = {width: '40px'};
     return (
       <Table className="score" bordered condensed>
-        <TeamScore team={game.away} picks={this.teamPicks(game.away.id)} />
-        <TeamScore team={game.home} picks={this.teamPicks(game.home.id)} />
+        <TeamScore team={game.away} picks={this.teamPicks(game.away.id)} pos={this.possession(game.away)} />
+        <TeamScore team={game.home} picks={this.teamPicks(game.home.id)} pos={this.possession(game.home)} />
         <GameInfo game={game} />
       </Table>
     )

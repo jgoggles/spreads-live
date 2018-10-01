@@ -48,6 +48,12 @@ class TeamScore extends Component {
     return `${pickCount} ${word}`
   }
 
+  renderPos() {
+    if (this.props.pos) {
+      return <i className="fas fa-football-ball fa-flip-vertical"></i> 
+    }
+  }
+
   togglePicks() {
     this.setState({showPicks: !this.state.showPicks});
   }
@@ -63,6 +69,7 @@ class TeamScore extends Component {
           </td>
           <td>
             {team.full_name}
+            <span>{this.renderPos()}</span>
             <div className="pick-count">
               {this.pickCountMessage()}
             </div>

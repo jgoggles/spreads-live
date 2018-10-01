@@ -2,7 +2,8 @@ import React from 'react';
 import '../Scores.css';
 
 const ordinal = (n) => {
-  switch (n) {
+  const num = n.toString();
+  switch (num) {
     case "1":
       return "1st"
     case "2":
@@ -20,6 +21,7 @@ const InGame = ({ game }) => (
   <div>
     <span className="clock">{ordinal(game.qtr)} Qtr - {game.clock}</span>
     <span className="down-and-distance">{ordinal(game.down)} & {game.togo}</span>
+    <span className="yardline">{game.yl}</span>
   </div>
 )
 

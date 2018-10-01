@@ -9,7 +9,7 @@
 .clock {
 }
 
-.down-and-distance {
+.down-and-distance, .yardline {
   margin-left: 18px;
 }
 
@@ -33,4 +33,9 @@
 
 .logo img { 
   width: 40px;
+}
+
+.fa-football-ball {
+  font-size: 10px;
+  margin-left: 6px;
 }
