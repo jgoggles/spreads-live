@@ -13,7 +13,7 @@ const ordinal = (n) => {
     case "4":
       return "4th Qtr"
     case "5":
-      return "OT"
+      return "Overtime"
     default:
       return null
   }
