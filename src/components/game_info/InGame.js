@@ -5,13 +5,13 @@ const ordinal = (n) => {
   const num = n.toString();
   switch (num) {
     case "1":
-      return "1st"
+      return "1st Qtr"
     case "2":
-      return "2nd"
+      return "2nd Qtr"
     case "3":
-      return "3rd"
+      return "3rd Qtr"
     case "4":
-      return "4th"
+      return "4th Qtr"
     case "5":
       return "OT"
     default:
@@ -21,7 +21,7 @@ const ordinal = (n) => {
 
 const InGame = ({ game }) => (
   <div>
-    <span className="clock">{ordinal(game.qtr)} Qtr - {game.clock}</span>
+    <span className="clock">{ordinal(game.qtr)} - {game.clock}</span>
     <span className="down-and-distance">{ordinal(game.down)} & {game.togo}</span>
     <span className="yardline">{game.yl}</span>
   </div>
