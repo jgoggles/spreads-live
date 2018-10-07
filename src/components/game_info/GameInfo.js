@@ -1,5 +1,6 @@
 import React from 'react'
 import Final from './Final'
+import Halftime from './Halftime'
 import Pregame from './Pregame'
 import InGame from './InGame'
 import '../Scores.css';
@@ -9,8 +10,10 @@ class GameInfo extends React.Component {
     const { game } = this.props;
 
 
-    if (game.qtr === "Final" || game.qtr === "final overtime") {
+    if (["Final", "final overtime"].includes(game.qtr)) {
       return <Final />
+    } else if (game.qtr === "Halftime") {
+      return <Halftime />
     } else if (game.qtr === "Pregame" || !game.qtr) {
       return <Pregame date={game.date} />
     } else {
