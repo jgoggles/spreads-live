@@ -1,9 +1,11 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
+import { Table } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchPickSets } from '../actions/pick_set_actions';
 import PickCard from './PickCard';
+import './Base.css';
 
 class PickSets extends Component {
   componentWillMount() {
@@ -25,6 +27,14 @@ class PickSets extends Component {
       <div>
         <h3>Picks</h3>
         <div>
+          <Table condensed className="lone-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th className="right">Record</th>
+              </tr>
+            </thead>
+          </Table>      
           {this.renderPicks()}
         </div>
       </div>

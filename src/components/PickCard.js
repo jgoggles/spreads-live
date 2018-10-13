@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { Table, Collapse } from 'react-bootstrap';
 import './PickCard.css';
+import './Base.css';
 
 class PickCard extends Component {
   constructor(props) {
@@ -62,7 +63,7 @@ class PickCard extends Component {
         </Table>
         <Collapse in={this.state.showRows}>
           <div>
-            <Table condensed bordered key={pickSet.id}>
+            <Table condensed bordered className="lone-table" key={pickSet.id}>
               <tbody>
                 {this.renderTeams()}
               </tbody>
