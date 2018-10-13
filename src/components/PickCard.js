@@ -19,11 +19,17 @@ class PickCard extends Component {
     const spreadWidth = {'width': '40px'};
     return (
       _.map(this.props.pickSet.picks, pick => {
+        let backgroundColor;
+        if (pick.result === "W") {
+          backgroundColor = "#d4edda"
+        } else if (pick.result === "L") {
+          backgroundColor = "#f8d7da"
+        }
+
         return (
-          <tr className="user-pick" key={pick.id}>
+          <tr className="user-pick" key={pick.id} style={{"backgroundColor": backgroundColor}}>
             <td>{pick.team}</td>
             <td style={spreadWidth}>{pick.spread}</td>
-            <td style={spreadWidth}>{pick.result}</td>
           </tr>
         )
       })
