@@ -22,7 +22,7 @@ class Standings extends Component {
         } else { rowStyle = null }
         return (
           <tr key={pickSet.id} style={rowStyle}>
-            <td>{pickSet.user}</td> 
+            <td style={{"maxWidth":"220px", "overflow": "hidden", "textOverflow":"ellipsis", "whiteSpace":"nowrap"}}>{pickSet.user}</td> 
             <td className="right">{this.thisWeek(pickSet)}</td> 
             <td className="right">{pickSet.new_points}</td> 
           </tr>
@@ -38,7 +38,7 @@ class Standings extends Component {
         <Table condensed>
           <thead>
             <tr>
-              <th></th>
+              <th style={{"maxWidth":"67%"}}></th>
               <th className="right">This Week</th>
               <th className="right">Overall</th>
             </tr>

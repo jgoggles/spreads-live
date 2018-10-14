@@ -62,7 +62,7 @@ class PickCard extends Component {
         <Table condensed hover className="pick-set-table" style={tableStyle}>
           <tbody>
             <tr className="pick-set-head" onClick={this.togglePicks}>
-              <td>{pickSet.user}</td>
+              <td style={{"maxWidth":"220px", "overflow": "hidden", "textOverflow":"ellipsis", "whiteSpace":"nowrap"}}>{pickSet.user}</td>
               <td style={{"textAlign": "right"}}>{this.renderRecord()}</td>
             </tr>
           </tbody>
