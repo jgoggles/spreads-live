@@ -3,40 +3,49 @@ import React, { Component } from 'react';
 import { Table, Col } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { fetchStats } from '../actions/stats_actions';
 import BasicStats from './stats/BasicStats';
 import MostAction from './stats/MostAction';
 import MostPicked from './stats/MostPicked';
-import './Stats.css';
+import '../css/stats.css';
 
 class Stats extends Component {
   componentWillMount() {
+    this.props.fetchStats();
   }
 
   render() {
+    const { stats } = this.props;
+    if (!stats) {
+      return <div>Loading...</div>
+    }
+
     return (
       <div className="stats-container">
         <Col md={2}>
-          <BasicStats />
+          <BasicStats homeVsAway={stats.home_vs_away} favVsDog={stats.favorite_vs_underdog} />
         </Col>
         <Col md={2}>
-          <MostAction />
+          <MostAction stats={stats.most_action} />
         </Col>
         <Col md={2}>
-          <MostPicked />
+          <MostPicked stats={stats.most_picked} />
         </Col>
       </div>
     )
   }
 }
 
-//function mapStateToProps(state) {
-  //return { pickSets: state.pickSets };
-//}
+function mapStateToProps(state) {
+  return { 
+    pickSets: state.pickSets,
+    stats: state.stats
+  };
+}
 
-//function mapDispatchToProps(dispatch) {
-  //return bindActionCreators({fetchPickSets}, dispatch);
-//}
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({fetchStats}, dispatch);
+}
 
-//export default connect(mapStateToProps, mapDispatchToProps)(PickSets);
-export default connect(null, null)(Stats);
+export default connect(mapStateToProps, mapDispatchToProps)(Stats);
 

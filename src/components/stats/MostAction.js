@@ -1,7 +1,18 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
-const MostAction = () => (
+const listItems = (stats) => {
+  return stats.map(game => {
+    return (
+      <tr key={game.id}>
+        <td>{game.away} at {game.home}</td>
+        <td>{game.freq}</td>
+      </tr>
+    )
+  }
+)}
+
+const MostAction = ({ stats }) => (
   <div>
     <Table>
       <thead>
@@ -11,22 +22,7 @@ const MostAction = () => (
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Broncos at Rams</td>
-          <td>58</td>
-        </tr>
-        <tr>
-          <td>Raiders at Chiefs</td>
-          <td>3</td>
-        </tr>
-        <tr>
-          <td>Eagles at Panthers</td>
-          <td>3</td>
-        </tr>
-        <tr>
-          <td>Giants at Bucs</td>
-          <td>3</td>
-        </tr>
+        {listItems(stats)}
       </tbody>
     </Table>
   </div>

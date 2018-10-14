@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
-const BasicStats = () => (
+const BasicStats = ({ homeVsAway, favVsDog }) => (
   <div>
     <Table>
       <thead>
@@ -13,19 +13,19 @@ const BasicStats = () => (
       <tbody>
         <tr>
           <td>Home</td>
-          <td>3</td>
+          <td>{homeVsAway.home}</td>
         </tr>
         <tr>
           <td>Away</td>
-          <td>3</td>
+          <td>{homeVsAway.away}</td>
         </tr>
         <tr>
           <td>Favorites</td>
-          <td>3</td>
+          <td>{favVsDog.favorite}</td>
         </tr>
         <tr>
           <td>Underdogs</td>
-          <td>3</td>
+          <td>{favVsDog.underdog}</td>
         </tr>
       </tbody>
     </Table>

@@ -1,7 +1,18 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
-const MostPicked = () => (
+const listItems = (stats) => {
+  return stats.map(team => {
+    return (
+      <tr key={team.id}>
+        <td>{team.name}</td>
+        <td>{team.freq}</td>
+      </tr>
+    )
+  }
+)}
+
+const MostPicked = ({ stats }) => (
   <div>
     <Table>
       <thead>
@@ -11,22 +22,7 @@ const MostPicked = () => (
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Broncos</td>
-          <td>58</td>
-        </tr>
-        <tr>
-          <td>Raiders</td>
-          <td>3</td>
-        </tr>
-        <tr>
-          <td>Eagles</td>
-          <td>3</td>
-        </tr>
-        <tr>
-          <td>Giants</td>
-          <td>3</td>
-        </tr>
+        {listItems(stats)}
       </tbody>
     </Table>
   </div>
