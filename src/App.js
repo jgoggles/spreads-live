@@ -50,7 +50,7 @@ class App extends Component {
         <Row className="show-grid">
           <Col md={12}>
             <ButtonToolbar className="controls">
-              <Button bsSize="small" onClick={this.toggleStats}>Stats</Button>
+              <Button bsSize="xsmall" onClick={this.toggleStats}>Stats</Button>
             </ButtonToolbar>
             <Collapse in={this.state.showStats}>
               <div>
