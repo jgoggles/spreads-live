@@ -54,7 +54,6 @@ class Standings extends Component {
 
 function mapStateToProps(state) {
   return { 
-    standings: state.standings,
     pickSets: state.pickSets
   };
 }
