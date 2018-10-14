@@ -4,6 +4,8 @@ import { Table, Col } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchStats } from '../actions/stats_actions';
+import PickHelper from '../lib/pick_helper';
+import PoolRecord from './stats/PoolRecord';
 import BasicStats from './stats/BasicStats';
 import MostAction from './stats/MostAction';
 import MostPicked from './stats/MostPicked';
@@ -20,6 +22,9 @@ class Stats extends Component {
       return <div>Loading...</div>
     }
 
+    const pickHelper = new PickHelper();
+    const totals = pickHelper.totals(this.props.pickSets);
+
     return (
       <div className="stats-container">
         <Col md={2}>
@@ -30,6 +35,9 @@ class Stats extends Component {
         </Col>
         <Col md={2}>
           <MostPicked stats={stats.most_picked} />
+        </Col>
+        <Col md={2}>
+          <PoolRecord wins={totals.wins} losses={totals.losses} pushes={totals.pushes} />
         </Col>
       </div>
     )

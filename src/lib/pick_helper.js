@@ -22,4 +22,20 @@ export default class PickHelper {
       return 'L'
     }
   }
+
+  totals(pickSets) {
+    const wins = _.sum(pickSets.map(ps => {
+      return ps.record.win
+    }))
+
+    const losses = _.sum(pickSets.map(ps => {
+      return ps.record.loss
+    }))
+
+    const pushes = _.sum(pickSets.map(ps => {
+      return ps.record.push
+    }))
+
+    return {wins, losses, pushes}
+  }
 }

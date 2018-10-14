@@ -14,7 +14,7 @@ class Scores extends Component {
     if (process.env.NODE_ENV == 'production') {
       interval = 60000;
     } else {
-      interval = 5000;
+      interval = 3000;
     }
     this.autoFlush(interval);
   }
