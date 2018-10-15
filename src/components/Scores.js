@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import moment from 'moment';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -10,13 +11,18 @@ import GameCard from './GameCard';
 class Scores extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      lastUpdated: _.now()
+    }
+
     let interval;
     if (process.env.NODE_ENV == 'production') {
       interval = 60000;
     } else {
       interval = 3000;
     }
-    this.autoFlush(interval);
+    this.interval = interval;
   }
 
   componentWillMount() {
@@ -24,11 +30,13 @@ class Scores extends Component {
       .then(() => {
         this.props.fetchScores();
       })
+    this.autoFlush(this.interval);
   }
 
   autoFlush(interval) {
     setInterval(() => {
       this.props.fetchScores();
+      this.setState({lastUpdated: _.now()});
     },
     interval);
   }
@@ -50,7 +58,10 @@ class Scores extends Component {
   render() {
     return (
       <div>
-        <h3>Scores</h3>
+        <h3>
+          Scores&nbsp;
+          <small style={{"fontSize":"12px"}}>Updated: {moment(this.state.lastUpdated).format('h:mm:ss a')}</small>
+        </h3>
         <div>
           {this.renderGames()}
         </div>
