@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { picksAvailable } from './actions/access_actions';
+import { scoreboardAvailable } from './actions/access_actions';
+import { fetchPickSets } from './actions/pick_set_actions';
 import Scores from './components/Scores'
 import PickSets from './components/PickSets'
 import Standings from './components/Standings'
@@ -31,11 +32,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.picksAvailable();
+    this.props.scoreboardAvailable()
+    .then(res => {
+      if (this.props.showPicks) {
+        this.props.fetchPickSets();
+      }
+    })
   }
 
   toggleStats() {
     this.setState({showStats: !this.state.showStats});
+  }
+
+  filterUndefeated() {
   }
 
   render() {
@@ -51,6 +60,7 @@ class App extends Component {
           <Col md={12}>
             <ButtonToolbar className="controls">
               <Button bsSize="xsmall" onClick={this.toggleStats}>Stats</Button>
+              <Button bsSize="xsmall">3-0</Button>
             </ButtonToolbar>
             <Collapse in={this.state.showStats}>
               <div>
@@ -61,10 +71,10 @@ class App extends Component {
             </Collapse>
           </Col>
           <Col md={4}>
-            <PickSets />
+            <PickSets pickSets={this.props.pickSets} />
           </Col>
           <Col md={4}>
-            <Standings />
+            <Standings pickSets={this.props.pickSets} />
           </Col>
           <Col md={4}>
             <Scores />
@@ -76,11 +86,17 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  return { showPicks: state.access };
+  return { 
+    showPicks: state.access,
+    pickSets: state.pickSets
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({picksAvailable}, dispatch);
+  return bindActionCreators({
+    scoreboardAvailable,
+    fetchPickSets
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

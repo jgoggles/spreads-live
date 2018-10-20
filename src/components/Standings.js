@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Table } from 'react-bootstrap';
 import './Base.css';
 
@@ -52,10 +51,4 @@ class Standings extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { 
-    pickSets: state.pickSets
-  };
-}
-
-export default connect(mapStateToProps, null)(Standings);
+export default Standings;

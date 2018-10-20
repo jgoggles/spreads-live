@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const PICKS_AVAILABLE = 'picks_available';
+export const SCOREBOARD_AVAILABLE = 'scoreboard_available';
 
 let API_URL;
 if (process.env.NODE_ENV !== 'production') {
@@ -9,7 +9,7 @@ if (process.env.NODE_ENV !== 'production') {
   API_URL = 'https://spreads.herokuapp.com/api/v1/access';
 }
 
-export function picksAvailable() {
+export function scoreboardAvailable() {
   const urlParams = new URLSearchParams(window.location.search);
   const poolId = urlParams.get('pool');
   const userId = urlParams.get('user');
@@ -23,7 +23,7 @@ export function picksAvailable() {
   const request = axios.request(requestConfig);
 
   return {
-    type: PICKS_AVAILABLE,
+    type: SCOREBOARD_AVAILABLE,
     payload: request
   };
 }
