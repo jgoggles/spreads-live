@@ -66,8 +66,6 @@ class App extends Component {
       )
     }
 
-    console.log('filter', this.props.filter);
-
     return (
       <Grid>
         <Row className="show-grid">
@@ -92,7 +90,7 @@ class App extends Component {
             <PickSets pickSets={this.filterPickSets()} />
           </Col>
           <Col md={4}>
-            <Standings pickSets={this.props.pickSets} />
+            <Standings pickSets={this.filterPickSets()} />
           </Col>
           <Col md={4}>
             <Scores />
