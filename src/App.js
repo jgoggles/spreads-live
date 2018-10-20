@@ -1,8 +1,10 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { scoreboardAvailable } from './actions/access_actions';
 import { fetchPickSets } from './actions/pick_set_actions';
+import { filterWins, clearFilters } from './actions/filter_actions';
 import Scores from './components/Scores'
 import PickSets from './components/PickSets'
 import Standings from './components/Standings'
@@ -15,7 +17,10 @@ import {
   Col, 
   Alert, 
   Button, 
+  ButtonGroup,
   ButtonToolbar, 
+  ToggleButtonGroup,
+  ToggleButton,
   Collapse 
 } from 'react-bootstrap';
 import './components/Base.css';
@@ -44,7 +49,14 @@ class App extends Component {
     this.setState({showStats: !this.state.showStats});
   }
 
-  filterUndefeated() {
+  filterPickSets() {
+    if (this.props.filter.wins !== null) {
+      return _.filter(this.props.pickSets, ps => {
+        return ps.record.win == this.props.filter.wins
+      }) 
+    } else {
+      return this.props.pickSets
+    }
   }
 
   render() {
@@ -54,13 +66,19 @@ class App extends Component {
       )
     }
 
+    console.log('filter', this.props.filter);
+
     return (
       <Grid>
         <Row className="show-grid">
           <Col md={12}>
             <ButtonToolbar className="controls">
               <Button bsSize="xsmall" onClick={this.toggleStats}>Stats</Button>
-              <Button bsSize="xsmall">3-0</Button>
+              <ToggleButtonGroup type="radio" name="options" defaultValue={'clear'}>
+                <ToggleButton value={3} bsSize="xsmall" onClick={() => this.props.filterWins(3)}>3-0</ToggleButton>
+                <ToggleButton value={0} bsSize="xsmall" onClick={() => this.props.filterWins(0)}>0-3</ToggleButton>
+                <ToggleButton value={'clear'} bsSize="xsmall" onClick={this.props.clearFilters}>All</ToggleButton>
+              </ToggleButtonGroup>
             </ButtonToolbar>
             <Collapse in={this.state.showStats}>
               <div>
@@ -71,7 +89,7 @@ class App extends Component {
             </Collapse>
           </Col>
           <Col md={4}>
-            <PickSets pickSets={this.props.pickSets} />
+            <PickSets pickSets={this.filterPickSets()} />
           </Col>
           <Col md={4}>
             <Standings pickSets={this.props.pickSets} />
@@ -88,14 +106,17 @@ class App extends Component {
 function mapStateToProps(state) {
   return { 
     showPicks: state.access,
-    pickSets: state.pickSets
+    pickSets: state.pickSets,
+    filter: state.filter
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     scoreboardAvailable,
-    fetchPickSets
+    fetchPickSets,
+    filterWins,
+    clearFilters
   }, dispatch);
 }
 
