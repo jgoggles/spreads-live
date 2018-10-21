@@ -83,7 +83,7 @@ class PickCard extends Component {
         <Table condensed hover className="pick-set-table" style={tableStyle}>
           <tbody>
             <tr className="pick-set-head" onClick={this.togglePicks}>
-              <td onClick={(e) => {
+              <td style={{"width":"20px"}}onClick={(e) => {
                 e.stopPropagation();
                 this.props.toggleFavorite(pickSet.id);
               }}>

@@ -5,7 +5,8 @@ export const UPDATE_PICK_SETS = 'update_pick_sets';
 
 let API_URL;
 if (process.env.NODE_ENV !== 'production') {
-  API_URL = 'http://localhost:3001/api/v1/picks';
+  API_URL = 'https://spreads.herokuapp.com/api/v1/picks';
+  //API_URL = 'http://localhost:3001/api/v1/picks';
 } else {
   API_URL = 'https://spreads.herokuapp.com/api/v1/picks';
 }

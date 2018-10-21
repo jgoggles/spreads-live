@@ -48,10 +48,15 @@ class App extends Component {
     this.setState({showStats: !this.state.showStats});
   }
 
+  // change how we're filtering here because its dumb
   filterPickSets(pickSets = this.props.pickSets) {
-    if (this.props.filter.wins !== null) {
+    if (this.props.filter.wins === 3) {
       return _.filter(pickSets, ps => {
-        return ps.record.win == this.props.filter.wins
+        return ps.record.win === this.props.filter.wins
+      }) 
+    } else if (this.props.filter.wins === 0) {
+      return _.filter(pickSets, ps => {
+        return ps.record.loss === 3
       }) 
     } else {
       return pickSets
@@ -64,7 +69,7 @@ class App extends Component {
     }
   }
 
-  renderFavorites() {
+  renderFavoritesPickSets() {
     if (this.props.filter.favorites.length > 0) {
       return <PickSets pickSets={this.filterPickSets(this.filterFavorites())} />
     }
@@ -107,7 +112,7 @@ class App extends Component {
           </Col>
           <Col md={4}>
             <h3>Picks</h3>
-            {this.renderFavorites()}
+            {this.renderFavoritePickSets()}
             <PickSets pickSets={this.filterPickSets()} />
           </Col>
           <Col md={4}>

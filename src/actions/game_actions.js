@@ -6,7 +6,8 @@ export const FETCH_SCORES = 'fetch_scores';
 const SCORES_URL = 'http://www.nfl.com/liveupdate/scores/scores.json';
 let API_URL;
 if (process.env.NODE_ENV !== 'production') {
-  API_URL = 'http://localhost:3001/api/v1/games';
+  API_URL = 'https://spreads.herokuapp.com/api/v1/games';
+  //API_URL = 'http://localhost:3001/api/v1/games';
 } else {
   API_URL = 'https://spreads.herokuapp.com/api/v1/games';
 }
