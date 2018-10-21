@@ -104,6 +104,7 @@ class App extends Component {
       <Grid>
         <Row className="show-grid">
           <Col md={12}>
+            <p style={{"fontSize":"10px"}}>Page updates every minute, no need to refresh</p>
             <ButtonToolbar className="controls">
               <Button bsSize="xsmall" onClick={this.toggleStats}>Stats</Button>
               <ToggleButtonGroup bsSize="xsmall" type="radio" name="options" defaultValue={'clear'}>

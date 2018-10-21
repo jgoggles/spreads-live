@@ -20,7 +20,7 @@ class Scores extends Component {
     if (process.env.NODE_ENV == 'production') {
       interval = 60000;
     } else {
-      interval = 30000;
+      interval = 5000;
     }
     this.interval = interval;
   }
