@@ -1,5 +1,8 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { toggleFavorite } from '../actions/filter_actions';
 import { Table, Collapse } from 'react-bootstrap';
 import './PickCard.css';
 import './Base.css';
@@ -62,6 +65,10 @@ class PickCard extends Component {
         <Table condensed hover className="pick-set-table" style={tableStyle}>
           <tbody>
             <tr className="pick-set-head" onClick={this.togglePicks}>
+              <td onClick={(e) => {
+                e.stopPropagation();
+                this.props.toggleFavorite(pickSet.id);
+              }}>add</td>
               <td style={{"maxWidth":"220px", "overflow": "hidden", "textOverflow":"ellipsis", "whiteSpace":"nowrap"}}>{pickSet.user}</td>
               <td style={{"textAlign": "right"}}>{this.renderRecord()}</td>
             </tr>
@@ -81,5 +88,16 @@ class PickCard extends Component {
   }
 }
 
-export default PickCard;
+function mapStateToProps(state) {
+  return { 
+    filter: state.filter
+  };
+}
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    toggleFavorite
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PickCard);
