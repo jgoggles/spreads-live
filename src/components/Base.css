@@ -1,3 +1,11 @@
+.fa-star {
+  color: #f2dede;
+}
+
+.fa-star:hover {
+  color: #d9534f;
+}
+
 .controls {
   margin-top: 8px;
 }
@@ -8,4 +16,13 @@
 
 .lone-table {
   margin-bottom: -1px;
+}
+
+.favorites {
+  background-color: #fcf8e3;
+  color: #8a6d3b;
+  border: 1px solid #faebcc;
+  border-radius: 4px;
+  padding: 5px;
+  margin-bottom: 12px;
 }

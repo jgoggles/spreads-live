@@ -53,11 +53,11 @@ class PickCard extends Component {
   renderStar() {
     if (this.props.filter.favorites.includes(this.props.pickSet.id)) {
       return (
-        <i className="fas fa-star" style={{"color":"green"}}></i>
+        <i className="fas fa-star"></i>
       )
     } else {
       return (
-        <i className="far fa-star" style={{"color":"green"}}></i>
+        <i className="far fa-star"></i>
       )
     }
   }
@@ -74,7 +74,7 @@ class PickCard extends Component {
 
     const tooltip = (
       <Tooltip id="tooltip">
-        Toggle favorite
+        Toggle watchlist
       </Tooltip>
     )
 

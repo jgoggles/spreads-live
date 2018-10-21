@@ -10,6 +10,14 @@ class Standings extends Component {
   }
 
   renderStanding() {
+    if (this.props.pickSets.length === 0) {
+      return (
+        <tr>
+          <td>No results</td>
+        </tr>
+      )
+    }
+
     const pickSets = _.sortBy(this.props.pickSets, [(ps) => { return -ps.new_points }]); 
     let rowStyle;
     return (
@@ -21,7 +29,7 @@ class Standings extends Component {
         } else { rowStyle = null }
         return (
           <tr key={pickSet.id} style={rowStyle}>
-            <td style={{"maxWidth":"220px", "overflow": "hidden", "textOverflow":"ellipsis", "whiteSpace":"nowrap"}}>{pickSet.user}</td> 
+            <td style={{"maxWidth":"200px", "overflow": "hidden", "textOverflow":"ellipsis", "whiteSpace":"nowrap"}}>{pickSet.user}</td> 
             <td className="right">{this.thisWeek(pickSet)}</td> 
             <td className="right">{pickSet.new_points}</td> 
           </tr>

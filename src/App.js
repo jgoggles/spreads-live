@@ -65,13 +65,23 @@ class App extends Component {
 
   renderFavoriteStandings() {
     if (this.props.filter.favorites.length > 0) {
-      return <Standings pickSets={this.filterPickSets(this.filterFavorites())} />
+      return (
+        <div className="favorites">
+          <strong>Watchlist</strong>
+          <Standings pickSets={this.filterPickSets(this.filterFavorites())} />
+        </div>
+      )
     }
   }
 
-  renderFavoritesPickSets() {
+  renderFavoritePickSets() {
     if (this.props.filter.favorites.length > 0) {
-      return <PickSets pickSets={this.filterPickSets(this.filterFavorites())} />
+      return (
+        <div className="favorites">
+          <strong>Watchlist</strong>
+          <PickSets pickSets={this.filterPickSets(this.filterFavorites())} />
+        </div>
+      )
     }
   }
 

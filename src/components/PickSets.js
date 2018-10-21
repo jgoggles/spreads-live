@@ -8,13 +8,25 @@ import './Base.css';
 
 class PickSets extends Component {
   renderPicks() {
-    return (
-      _.map(this.props.pickSets, pickSet => {
-        return (
-          <PickCard key={pickSet.id} pickSet={pickSet} />
-        )
-      })
-    )
+    if (this.props.pickSets.length === 0) {
+      return (
+        <Table>
+          <tbody>
+            <tr>
+              <td style={{"padding":"5px"}}>No results</td>
+            </tr>
+          </tbody>
+        </Table>
+      )
+    } else {
+      return (
+        _.map(this.props.pickSets, pickSet => {
+          return (
+            <PickCard key={pickSet.id} pickSet={pickSet} />
+          )
+        })
+      )
+    }
   }
 
   render() {
