@@ -48,14 +48,34 @@ class App extends Component {
     this.setState({showStats: !this.state.showStats});
   }
 
-  filterPickSets() {
+  filterPickSets(pickSets = this.props.pickSets) {
     if (this.props.filter.wins !== null) {
-      return _.filter(this.props.pickSets, ps => {
+      return _.filter(pickSets, ps => {
         return ps.record.win == this.props.filter.wins
       }) 
     } else {
-      return this.props.pickSets
+      return pickSets
     }
+  }
+
+  renderFavoriteStandings() {
+    if (this.props.filter.favorites.length > 0) {
+      return <Standings pickSets={this.filterPickSets(this.filterFavorites())} />
+    }
+  }
+
+  renderFavorites() {
+    if (this.props.filter.favorites.length > 0) {
+      return <PickSets pickSets={this.filterPickSets(this.filterFavorites())} />
+    }
+  }
+
+  filterFavorites() {
+    return _.filter(this.props.pickSets, ps => {
+      if (this.props.filter.favorites.includes(ps.id)) {
+        return ps
+      }
+    }) 
   }
 
   render() {
@@ -86,9 +106,13 @@ class App extends Component {
             </Collapse>
           </Col>
           <Col md={4}>
+            <h3>Picks</h3>
+            {this.renderFavorites()}
             <PickSets pickSets={this.filterPickSets()} />
           </Col>
           <Col md={4}>
+            <h3>Standings</h3>
+            {this.renderFavoriteStandings()}
             <Standings pickSets={this.filterPickSets()} />
           </Col>
           <Col md={4}>

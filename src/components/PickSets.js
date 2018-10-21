@@ -1,5 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { Table } from 'react-bootstrap';
 import PickCard from './PickCard';
 import './Base.css';
@@ -17,8 +19,7 @@ class PickSets extends Component {
 
   render() {
     return (
-      <div>
-        <h3>Picks</h3>
+      <div style={{"marginBottom": "20px"}}>
         <div>
           <Table condensed className="lone-table">
             <thead>
@@ -35,4 +36,10 @@ class PickSets extends Component {
   }
 }
 
-export default PickSets;
+function mapStateToProps(state) {
+  return { 
+    filter: state.filter
+  };
+}
+
+export default connect(mapStateToProps, null)(PickSets);

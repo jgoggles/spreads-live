@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { toggleFavorite } from '../actions/filter_actions';
-import { Table, Collapse } from 'react-bootstrap';
+import { Table, Collapse, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import './PickCard.css';
 import './Base.css';
 
@@ -50,6 +50,18 @@ class PickCard extends Component {
     this.setState({showRows: !this.state.showRows});
   }
 
+  renderStar() {
+    if (this.props.filter.favorites.includes(this.props.pickSet.id)) {
+      return (
+        <i className="fas fa-star" style={{"color":"green"}}></i>
+      )
+    } else {
+      return (
+        <i className="far fa-star" style={{"color":"green"}}></i>
+      )
+    }
+  }
+
   render() {
     const { pickSet } = this.props;
     const currentUser = pickSet.current;
@@ -60,6 +72,12 @@ class PickCard extends Component {
       }
     }
 
+    const tooltip = (
+      <Tooltip id="tooltip">
+        Toggle favorite
+      </Tooltip>
+    )
+
     return (
       <div>
         <Table condensed hover className="pick-set-table" style={tableStyle}>
@@ -68,7 +86,11 @@ class PickCard extends Component {
               <td onClick={(e) => {
                 e.stopPropagation();
                 this.props.toggleFavorite(pickSet.id);
-              }}>add</td>
+              }}>
+                <OverlayTrigger placement="top" overlay={tooltip} delayShow={500}>
+                  {this.renderStar()}
+                </OverlayTrigger>
+              </td>
               <td style={{"maxWidth":"220px", "overflow": "hidden", "textOverflow":"ellipsis", "whiteSpace":"nowrap"}}>{pickSet.user}</td>
               <td style={{"textAlign": "right"}}>{this.renderRecord()}</td>
             </tr>

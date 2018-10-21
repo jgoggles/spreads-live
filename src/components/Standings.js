@@ -33,7 +33,6 @@ class Standings extends Component {
   render() {
     return (
       <div>
-        <h3>Standings</h3>
         <Table condensed>
           <thead>
             <tr>
