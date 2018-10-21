@@ -17,7 +17,6 @@ import {
   Col, 
   Alert, 
   Button, 
-  ButtonGroup,
   ButtonToolbar, 
   ToggleButtonGroup,
   ToggleButton,
@@ -72,10 +71,10 @@ class App extends Component {
           <Col md={12}>
             <ButtonToolbar className="controls">
               <Button bsSize="xsmall" onClick={this.toggleStats}>Stats</Button>
-              <ToggleButtonGroup type="radio" name="options" defaultValue={'clear'}>
-                <ToggleButton value={3} bsSize="xsmall" onClick={() => this.props.filterWins(3)}>3-0</ToggleButton>
-                <ToggleButton value={0} bsSize="xsmall" onClick={() => this.props.filterWins(0)}>0-3</ToggleButton>
-                <ToggleButton value={'clear'} bsSize="xsmall" onClick={this.props.clearFilters}>All</ToggleButton>
+              <ToggleButtonGroup bsSize="xsmall" type="radio" name="options" defaultValue={'clear'}>
+                <ToggleButton value={3} onClick={() => this.props.filterWins(3)}>3-0</ToggleButton>
+                <ToggleButton value={0} onClick={() => this.props.filterWins(0)}>0-3</ToggleButton>
+                <ToggleButton value={'clear'} onClick={this.props.clearFilters}>All</ToggleButton>
               </ToggleButtonGroup>
             </ButtonToolbar>
             <Collapse in={this.state.showStats}>
