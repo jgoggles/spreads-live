@@ -13,7 +13,11 @@ export default function(state = [], action) {
 
         if (process.env.NODE_ENV == 'production') {
           scoreGame = _.find(scores, s => { 
-            return s.home.abbr == game.home.abbr;
+            if (s.home.abbr == "LA") {
+              return "LAR" == game.home.abbr;
+            } else {
+              return s.home.abbr == game.home.abbr;
+            }
           });
         } else {
           scoreGame = {
